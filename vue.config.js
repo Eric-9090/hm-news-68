@@ -1,5 +1,5 @@
 module.exports = {
-  devServe: {
+  devServer: {
     open: true
   }
 };
