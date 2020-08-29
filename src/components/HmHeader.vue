@@ -3,7 +3,7 @@
     <div class="back">
       <span class="iconfont iconjiantou2"></span>
     </div>
-    <div class="title">登陆</div>
+    <div class="title"><slot></slot></div>
     <div class="vacant"></div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {}
   text-align: center;
   line-height: 50px;
   font-size: 18px;
-  background: #1f4037;
+  // background: #1f4037;
   .back,
   .vacant {
     width: 50px;

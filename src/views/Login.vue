@@ -1,6 +1,6 @@
 <template>
   <div>
-    <hm-header></hm-header>
+    <hm-header>登陆</hm-header>
     <hm-logo></hm-logo>
     <van-form @submit="login">
       <van-field
@@ -23,16 +23,24 @@
           提交
         </van-button>
       </div>
+      <p class="tips">
+        没有账号,去<router-link to="/register">注册</router-link>?
+      </p>
     </van-form>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
+  created() {
+    const { username, password } = this.$route.params
+    this.username = username
+    this.password = password
+  },
   methods: {
     async login() {
-      const res = await axios.post('http://192.168.144.81:3000/login', {
+      const res = await this.$axios.post('/login', {
         username: this.username,
         password: this.password
       })
@@ -54,11 +62,11 @@ export default {
       password: '',
       rules: {
         username: [
-          { required: true, message: '请填写用户名', trigger: 'onChange' },
+          { required: true, trigger: 'onChange' },
           { pattern: /^\d{5,11}$/, message: '用户名长度是5-11位数' }
         ],
         password: [
-          { required: true, message: '请填写密码', trigger: 'onChange' },
+          { required: true, trigger: 'onChange' },
           { pattern: /^\d{3,9}$/, message: '密码长度是3-9位数字' }
         ]
       }
@@ -67,18 +75,15 @@ export default {
 }
 </script>
 
-<style lang="less">
-body {
-  background: #1f4037;
-  .van-field {
-    background: none;
-    .van-field__label {
-      display: none;
-    }
-    .van-field__control {
-      font-size: 18px;
-      color: #ccc;
-    }
+<style lang="less" scoped>
+//scoped 作用域 当前组件的样式带了scoped,只会在当前组件生效
+
+.tips {
+  padding: 15px;
+  font-size: 16px;
+  text-align: right;
+  a {
+    color: #999;
   }
 }
 </style>
