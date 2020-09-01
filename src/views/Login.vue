@@ -44,11 +44,13 @@ export default {
         username: this.username,
         password: this.password
       })
-      const { statusCode, message } = res.data
+      const { statusCode, message, data } = res.data
       if (statusCode === 200) {
         // 在组件中必须 通过this.$toast才能使用
         this.$toast.success(message)
         // 保存token
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('userId', data.user.id)
         // 跳转个人中心
         this.$router.push('/user')
       } else {
