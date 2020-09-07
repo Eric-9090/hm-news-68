@@ -1,5 +1,5 @@
 <template>
-  <div class="navItem">
+  <div class="navItem" @click="clickFn">
     <div class="title">
       <slot></slot>
     </div>
@@ -19,6 +19,8 @@ export default {
       if (this.to) {
         this.$router.push(this.to)
       }
+      // 触发click事件
+      this.$emit('click')
     }
   },
   props: {
