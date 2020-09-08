@@ -7,7 +7,9 @@ import { Toast } from 'vant'
 // 把axios挂载到vue的原型上
 Vue.prototype.$axios = axios
 // 全局的axios 配置baseURL 基准地址
-axios.defaults.baseURL = 'http://127.0.0.1:3000'
+const URL = 'http://127.0.0.1:3000'
+axios.defaults.baseURL = URL
+Vue.prototype.$base = URL
 // 给axios配置拦截器
 axios.interceptors.request.use(function(config) {
   // config:请求的配置信息
