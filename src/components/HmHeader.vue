@@ -1,7 +1,7 @@
 <template>
  <div class="placeholder">
     <div class="hm-header">
-    <div class="back">
+    <div class="back"  @click="back">
       <span class="iconfont iconjiantou2"></span>
     </div>
     <div class="title"><slot></slot></div>
@@ -11,7 +11,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    back() {
+      // this.$router.push()
+      // this.$router.back()
+      // this.$router.forward()
+      // this.$router.go(1)
+      this.$router.go(-1)
+    }
+  }
+}
 </script>
 
 <style lang="less">

@@ -18,6 +18,9 @@ import './utils/vant'
 
 Vue.config.productionTip = false
 
+const bus = new Vue()
+Vue.prototype.$bus = bus
+
 window.wm = new Vue({
   router,
   render: h => h(App)

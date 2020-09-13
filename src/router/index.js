@@ -1,14 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import User from '../views/User.vue'
-import UserEdit from '../views/UserEdit.vue'
-import Demo from '../views/Demo.vue'
-import MyFollow from '../views/MyFollow.vue'
-import MyComment from '../views/MyComment.vue'
-import MyStar from '../views/MyStar.vue'
+import Login from '../views/user/Login.vue'
+import Register from '../views/user/Register.vue'
+import User from '../views/user/User.vue'
+import UserEdit from '../views/user/UserEdit.vue'
+import Demo from '../views/user/Demo.vue'
+import Demo1 from '../views/user/Demo1.vue'
+import MyFollow from '../views/user/MyFollow.vue'
+import MyComment from '../views/user/MyComment.vue'
+import MyStar from '../views/user/MyStar.vue'
+import Index from '../views/news/Index.vue'
+import Manage from '../views/news/Manage.vue'
+import PostDetail from '../views/news/PostDetail.vue'
+import Search from '../views/news/Search.vue'
 
 Vue.use(VueRouter)
 // 全局的把push的异常处理了
@@ -40,6 +45,10 @@ const routes = [
     component: Demo
   },
   {
+    path: '/demo1',
+    component: Demo1
+  },
+  {
     path: '/my-follow',
     component: MyFollow,
     name: 'my-follow'
@@ -53,11 +62,33 @@ const routes = [
     path: '/mystar',
     component: MyStar,
     name: 'mystar'
+  },
+  {
+    path: '/',
+    component: Index,
+    name: 'index'
+  },
+  {
+    path: '/manage',
+    component: Manage,
+    name: 'manage'
+  },
+  {
+    path: '/post-detail/:id',
+    component: PostDetail,
+    name: 'post-detail'
+  },
+  {
+    path: '/search',
+    component: Search,
+    name: 'search'
   }
 
 ]
 const router = new VueRouter({
-  routes
+  routes,
+  // 采用H5的history模式,默认是hash模式
+  mode: 'history'
 })
 // 配置全局的导航守卫
 // to:到哪儿去

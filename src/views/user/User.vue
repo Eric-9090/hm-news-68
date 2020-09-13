@@ -1,5 +1,6 @@
 <template>
   <div class="user">
+    <hm-header>用户中心</hm-header>
     <div class="header"
          @click="$router.push('/user-edit')">
       <div class="avatar">
